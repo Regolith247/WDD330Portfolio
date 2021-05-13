@@ -1,0 +1,13 @@
+Doing stuff with Web things notes
+-Computers are stupid. I can relate to the whole 'amazingly quick to arrive at wrong conclusions' thing.
+-Saving output is a crucial part of user-computer interaction, and is not something that computers know how to do natively
+-This stuff is fairly simple. Build HTML, add tags for textarea.
+-This is actually a lot like building a page for a Twine game. Same syntax and everything. Might be good to practice using that software, since it has the correct formatting and such.
+-Always remember to close your tags!
+-h1 headers etc, pretty simple. Slightly awkward, but it works fine. Buttons, also pretty simple.
+-Hey, at least I don't have to deal with AJAX requests just yet...
+-Adding CSS, also fairly simple. Nothing you haven't done before.
+-onClick listeners, again, no worry. Save to var. No problem.
+-So far, pretty simple.
+
+Sitepoint seems pretty basic as well. I wasn't able to access the whole thing, at least, not in time for the assignment due date, but I should have it emailed to me soon.
