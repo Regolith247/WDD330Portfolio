@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width. initial-scale=1.0">
+    <title>Week04 Tutorial-Forms</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="error"></div>
+    <form id="form" action="/" method="GET">
+        <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password">
+        <br>
+            <br>
+            <label for="passwordConfirm"> Confirm Password</label>
+            <input id="passwordConfirm" name="passwordConfirm" type="password">
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+<p>
+    A submit can be multiple types of input. A button can only be a button. A submit is used to write data,
+    and also requires name and value attributes
+</p>
+
+</body>
+</html>

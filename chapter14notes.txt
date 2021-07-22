@@ -1,0 +1,53 @@
+The data- attribute is a way of embedding data in a web page using custom attributes that are ignored by the browser. They’re also private to a page, so are not intended to be used by an external service – their sole purpose is to be used by a JavaScript program. 
+
+The HTML5 specification contains a number of APIs that help to gain access to hardware, such as cameras, batteries, geolocation, and the graphics card.
+
+The Web Storage API has some crucial differences with cookies:
+
+Information stored isnotshared with the server on every request.
+
+Information is available in multiple windows of the browser (but only if the domain is the same).
+
+Storage capacity limit is much larger than the 4KB limit for cookies ( There is no actual limit in the specification, but most browsers have a limit set at 5GB per domain.).
+
+Any data stored does not automatically expire as it does with cookies. This potentially makes cookies a better choice for something like showing a popup once a day.
+
+Here is a basic example of storing information. To save a value locally, use:
+
+localStorage.setItem('name', 'Walter White');
+
+The fact that only strings can be saved might seem like a restriction at first, but by using JSON, we can store any JavaScript object in local storage.
+
+The Geolocation API is used to obtain the geographical position of the device. This means it can be used to find the user’s exact location, then link to nearby places or measure the speed at which the user is moving. 
+
+//...Yep. Getting spooky now.
+
+ Because of privacy concerns, permission to use this has to be granted by the user first.
+
+//But no doubt that can be circumvented
+
+The position object passed to the youAreHere() function has a coords property with a latitude and longitude property, which together give the coordinates of the device.
+
+The position object also has properties that calculate the accuracy of the measurements. These can be useful, as sometimes you only need to know the town or city users are in, while at other times you may need their exact position. 
+
+The lower the returned value, the more accurate the measurements are, as is the case for the position.altitudeAccuracy property, which returns the accuracy of the altitude property in meters.
+
+The Geolocation API provides a useful interface for adding location-based information to a website or application
+
+//What kind of potential could this have for mesh networking style connections?
+
+Web workers allow processes to be run in the background, adding support for concurrency in JavaScript.
+
+Shared web workers can be used by multiple scripts at the same time
+
+Websocket is a new protocol that allows two-way communication with a server – also known as push messaging. This means that a connection is kept open and responses are ‘pushed’ to the client as soon as they are received.
+
+//Discord obv
+//How to create a secure, lean messaging service that uses mesh networks?
+
+The Notification API allows you to show messages using the system's notifications. This is usually a popup in the corner of the screen, but it changes depending on the operating system. 
+
+
+Before HTML5, it was notoriously difficult to display audio and video in browsers, and plugins such as Flash often had to be used. HTML5 introduced the <audio> and <video> tags used to insert audio and video clips into a web page. It also introduced a Media API for controlling the playback of the clips using JavaScript.
+
+Certain APIs are more experimental than others, and could pose privacy risks

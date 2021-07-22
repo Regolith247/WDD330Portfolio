@@ -1,0 +1,126 @@
+The Browser Object Model (or BOM for short) is a collection of properties and methods that contain information about the browser and computer screen
+
+We can also find out the dimensions of the screen it is viewed on, and which pages have been visited before the current page. 
+- Is this a little bit similar to the Twine interface?
+
+ there are a number of properties and methods that are supported by all the major browsers, making a sort of de facto standard. These properties and methods are made available through the window object. 
+
+
+ The BOM only makes sense in a browser environment. 
+
+any global variable created is actually a property of the window object,
+
+In general, you should refer to global variables without using the window object; it’s less typing and your code will be more portable between environments.
+
+window.alert() method will pause the execution of the program and display a message in a dialog box. The message is provided as an argument to the method, and undefined is always returned:
+
+The window.confirm() method will stop the execution of the program and display a confirmation dialog that shows the message provided as an argument, and giving the options of OK or Cancel. It returns the boolean values of true if the user clicks OK, and false if the user clicks Cancel:
+
+The window.prompt() method will stop the execution of the program. It displays a dialog that shows a message provided as an argument, as well as an input field that allows the user to enter text.
+
+These methods must be used with great care- they will stop the program from running which can cause some big problems in some situations
+
+The window object has a navigator property that returns a reference to the Navigator object. The Navigator object contains information about the browser being used. Its userAgent property will return information about the browser and operating system being used. Don’t rely on this information though, as it can be modified by a user to masquerade as a different browser.
+
+The window.location property is an object that contains information about the URL of the current page. It contains a number of properties that provide information about different fragments of the URL. This property (as well as most of the others in this section) is a read/write property, which means it can also be changed by assignment. If this is done, the page will be reloaded using the new property. 
+
+The protocol property returns a string describing the protocol used (such as http , https , pop2 , ftp etc.). Note that there is a colon ( : ) at the end:
+
+The host property returns a string describing the domain of the current URLandthe port number (this is often omitted if the default port 80 is used):
+
+The hostname property returns a string describing the domain of the current URL:
+
+
+The port property returns a string describing the port number, although it will return an empty string if the port is not explicitly stated in the URL:
+
+The pathname property returns a string of the path that follows the domain:
+
+The search property returns a string that starts with a “?” followed by the query string parameters. It returns an empty string if there are no query string parameters. 
+
+The hash property returns a string that starts with a “#” followed by the fragment identifier.
+
+The origin property returns a string that shows the protocol and domain where the current page originated from. This property is read-only, so cannot be changed:
+
+The reload() method can be used to force a reload of the current page.
+
+The window.history property can be used to access information about any previously visited pages in the current browser session. Yep.
+
+The window.history.length property shows how many pages have been visited before arriving at the current page.
+
+//This really does feel like it could be setup in pretty much the same way as a Twine game. 
+//...because Twine is literally just a software that makes HTML pages and links them 
+//together
+
+A new window can be opened using the window.open() method. This takes the URL of the page to be opened as its first parameter, the window title as its second parameter, and a list of attributes as the third parameter. This can also be assigned to a variable, so the window can then be referenced later in the code:
+
+const popup = window.open('https://sitepoint.com','
+SitePoint','width=400,height=400,resizable=yes');
+
+The close() method can be used to close a window, assuming you have a reference to it:
+
+popup.close();
+
+Remember. Popups are annoying. Really annoying. As in, there is a burgeoning industry of software that blocks it.
+
+The window.screen object contains information about the screen the browser is displayed on. You can find out the height and width of the screen in pixels using the height and width properties respectively:
+
+window.screen.height
+<< 1024
+window.screen.width
+<< 1280
+
+The availHeight and availWidth can be used to find the height and width of the screen, excluding any operating system menus:
+
+Many of the methods and properties covered in the previous section were abused in the past for dubious activities such as user-agent sniffing, or detecting screen dimensions to decide whether or not to display certain elements. 
+
+The write() method simply writes a string of text to the page. If a page has already loaded, it will completely replace the current document:
+
+document.write('Hello, world!');
+
+The use of document.write() is heavily frowned upon
+
+Cookies are small files that are saved locally on a user’s computer. They were invented by Netscape as a way of getting round HTTP being a stateless protocol. This means that a browser does not remember anything from one request to another. So every time a user visits a page, nothing about any previous visits is remembered. Cookies can be used to sidestep this problem by storing information that can then be retrieved between requests.
+
+Cookies take the form of a text file that contain a list of name/value pairs separated by semicolons. For example, a cookie file might contain the following information:
+
+"name=Superman; hero=true; city=Metropolis"
+
+To create a cookie, you assign it to JavaScript’s “cookie jar”, using the document.cookie property, like so:
+
+document.cookie = 'name=Superman';
+<< "name=Superman"
+The document.cookie property acts like a special type of string. Assigning another cookie to it won’t overwrite the entire property, it will just append it to the end of the string. So we can add more cookies by assigning them to document.cookie :
+
+
+A cookie’s value can be changed by reassigning it to document.cookie using the same name but a different value. 
+
+To see the current contents of the cookie jar, simply enter document.cookie :
+
+We can use the split method to break the string into an array containing each name/value pair, then use a for of loop to iterate through the array:
+
+Adding the string ; secure to the end of a cookie will ensure it’s only transmitted over a secure HTTPS network:
+
+document.cookie = 'name=Batman; secure';
+Deleting Cookies
+To remove a cookie, you need to set it to expire at a time in the past:
+
+document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+If a cookie is a session cookie, it will expire when the tab or window is closed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

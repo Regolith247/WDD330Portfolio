@@ -1,0 +1,123 @@
+With HTML5’s Canvas API, we can draw anything we can imagine, all through JavaScript. This can improve the performance of our websites by avoiding the need to download images off the network. With canvas, we can draw shapes and lines, arcs and text, gradients and patterns. In addition, canvas gives us the power to manipulate pixels in images and even video.
+So... yep, pretty powerful and versatile.
+
+The first step to using canvas is to add a canvas element to the page:
+
+<canvas>
+    Sorry! Your browser doesn’t support Canvas.
+</canvas>
+The text in between the canvas tags will only be shown if the canvas element is not supported by the visitor’s browser.
+
+Since drawing on the canvas is done using JavaScript, we’ll need a way to grab the element from the DOM. We’ll do so by giving our canvas an ID:
+
+<canvas id="myCanvas" class="myCanvas">
+    Sorry! Your browser doesn’t support Canvas.
+</canvas>
+The canvas element takes both a width and height attribute, which must also be set.
+
+the width and height attributes determine how large the canvas’s coordinate system is. If we don’t specify width and height , the canvas element will default to a width of 300 and a height of 150. 
+
+anvas has no default styling, so it’s difficult to see where it is on the page unless you give it some kind of border:
+
+.myCanvas {
+    border: dotted 2px black;
+}
+
+Once we’ve stored our canvas element in a variable, we then set up the canvas’scontext. The context is the place where your drawing is rendered. 
+
+On a real-life painting canvas, you must first saturate your brush with paint before you can begin. In the HTML5 canvas, you must do the same, and we do so with the strokeStyle or fillStyle properties. 
+
+Let’s start by using a color string to style thestroke. You can think of the stroke as the border of the shape you’re going to draw. To draw a rectangle with a red border, we first define the stroke color:
+
+var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";
+To draw a rectangle with a red border and blue fill, we must also define the fill color:
+
+var canvas = document.getElementById("myCanvas");     
+var context = canvas.getContext("2d");
+context.strokeStyle = "red";
+context.fillStyle = "blue";
+
+ But now, we’ll draw a rectangle. We can do this by calling the fillRect and strokeRect methods. Both of these methods take the X and Y coordinates where you want to begin drawing the fill or the stroke, and the width and height of the rectangle. We’ll add the stroke and fill 10 pixels from the top and 10 pixels from the left of the canvas’s top-left corner:
+
+var canvas = document.getElementById("myCanvas"); 
+var context = canvas.getContext("2d"); 
+context.strokeStyle = "red";
+context.fillStyle = "rgba(0, 0, 255, 0.5)";
+context.fillRect(10, 10, 100, 100);   
+context.strokeRect(10, 10, 100, 100);
+This will create a semitransparent blue rectangle with a red border
+
+the coordinate system in the canvas element is different from the Cartesian coordinate system you learned in math class. In the canvas coordinate system, the top-left corner is (0,0). If the canvas is 200 pixels by 200 pixels, then the bottom-right corner is (200,200)
+
+We’re not limited to drawing rectangles—we can draw any shape we can imagine! Unlike rectangles and squares, however, there’s no built-in method for drawing circles or other shapes. To draw more interesting shapes, we must first lay out the path of the shape.
+
+Pathscreate a blueprint for your lines, arcs, and shapes, but paths are invisible until you give them a stroke! When we drew rectangles, we first set the strokeStyle and then called fillRect . With more complex shapes, we need to take three steps: layout the path, stroke the path, and fill the path. As with drawing rectangles, we can just stroke the path, or fill the path—or we can do both.
+
+If we create an image programmatically using the Canvas API, but decide we’d like to have a local copy of our drawing, we can use the API’s toDataURL method to save our drawing. toDataURL creates a URL with the image in it, (either a png or jpg, whichever is specified). You can then right-click the image at this URL, and save it as a PNG or JPEG.
+
+We can add images to the canvas and then use the canvas to alter/manipulate the image
+
+Once we’ve drawn an image on the canvas , we can use the getImageData method from the Canvas API to manipulate the pixels of that image. For example, if we wanted to convert our logo from color to black and white, we can do so using methods in the Canvas API.
+
+RGB and alpha values can all be manipulated. Testing for this must be done either on a local web server, or online
+
+Video can also be converted via a similar process
+
+A major downside of canvas in its current form is its lack of accessibility. The canvas doesn’t create a DOM node, is not a text-based format, and is thus essentially invisible to tools such as screen readers. For example, even though we wrote text to the canvas in our last example, that text is essentially no more than a bunch of pixels and is therefore inaccessible―it’s just like an image that contains text.
+
+Images can be created seperately in an image editor such as Inkscape to create SVG files. Both canva and SVG files have their own advantages. Canvas is faster than SVG, but SVG is retained in the XML of the page and has a more complete set of tools to work with it.
+
+In summary, if you need to paint pixels to the screen and have no concerns about the ability to retrieve and modify your shapes, canvas is probably the better choice. If, on the other hand, you need to be able to access and change specific aspects of your graphics, SVG might be more appropriate.
+
+Drag and Drop API
+
+There are two major kinds of functionality you can implement with Drag and Drop: dragging files from your computer into a web page—in combination with the File API—or dragging elements into other elements on the same page. 
+
+There are several steps to adding drag and drop to your page:
+
+Set the draggable attribute on any HTML elements you’d like to be draggable.
+
+Add an event listener for the dragstart event on any draggable HTML elements.
+
+Add an event listener for the dragover and drop events on any elements that you want to have accept dropped items.
+
+Note that draggable isnota Boolean attribute, so you have to explicitly set it to true .
+
+ by default, elements on the page aren’t set up to receive dragged items. In order to override the default behavior on a specific element, we must stop it from happening. We can do that by creating two more event listeners.
+
+The two events we need to monitor for are dragover and drop . As you’d expect, dragover fires when you drag an item over an element, and drop fires when you drop an item on it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
